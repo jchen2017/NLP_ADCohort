@@ -1,0 +1,48 @@
+sid,id,label,text,plabel,patid,orig_text
+0,1,0,date : xxxxx,0,1.0,Date:xxxxx
+1,2,0,patient info : xxxxx,0,1.0,Patient Info:xxxxx
+2,3,0,patient info : xxxxx,0,1.0,Patient Info:xxxxx
+3,4,0,clinical history,0,1.0,Clinical History
+4,5,0,clinical history,0,1.0,Clinical History
+5,6,0,"chief complaint : xxxxxx ,",0,1.0,"Chief complaint:xxxxxx,"
+6,7,0,"xxxxxxxxxxx , xxxxxxxxxxxxxxxxxxx",0,1.0,"xxxxxxxxxxx, xxxxxxxxxxxxxxxxxxx"
+7,8,0,"xxxx , xxxxxx .",0,1.0,"xxxx, xxxxxx."
+8,9,0,"xxxx , xxxxxx .",0,1.0,"xxxx, xxxxxx."
+9,10,0,section header : xxxxxxxx,0,1.0,SECTION HEADER: xxxxxxxx
+10,11,0,xxxxxxxxxxxxx,0,1.0,xxxxxxxxxxxxx
+11,12,0,xxxxxxxxxxxxx,0,1.0,xxxxxxxxxxxxx
+12,13,0,summary,0,1.0,SUMMARY
+13,14,0,summary,0,1.0,SUMMARY
+14,15,0,xxxxxxxxxxxxxxxxxxxxxxxxxx,0,1.0,XXXXXXXXXXXXXXXXXXXXXXXXXX
+15,16,0,"xxxx , xxxx severe Alzheimer xxxxxx .",0,1.0,"XXXX, XXXX Severe AD XXXXXX."
+16,1,0,date : xxxxx,0,2.0,Date:xxxxx
+17,2,0,patient info : xxxxx,0,2.0,Patient Info:xxxxx
+18,3,0,patient info : xxxxx,0,2.0,Patient Info:xxxxx
+19,4,0,clinical history,0,2.0,Clinical History
+20,5,0,clinical history,0,2.0,Clinical History
+21,6,0,"chief complaint : xxxxxx ,",0,2.0,"Chief complaint:xxxxxx,"
+22,7,0,"xxxxxxxxxxx , xxxxxxxxxxxxxxxxxxx",0,2.0,"xxxxxxxxxxx, xxxxxxxxxxxxxxxxxxx"
+23,8,0,"xxxx , xxxxxx .",0,2.0,"xxxx, xxxxxx."
+24,9,0,"xxxx , xxxxxx .",0,2.0,"xxxx, xxxxxx."
+25,10,0,section header : xxxxxxxx,0,2.0,SECTION HEADER: xxxxxxxx
+26,11,0,xxxxxxxxxxxxx,0,2.0,xxxxxxxxxxxxx
+27,12,0,xxxxxxxxxxxxx,0,2.0,xxxxxxxxxxxxx
+28,13,0,summary,0,2.0,SUMMARY
+29,14,0,summary,0,2.0,SUMMARY
+30,15,0,xxxxxxxxxxxxxxxxxxxxxxxxxx,0,2.0,XXXXXXXXXXXXXXXXXXXXXXXXXX
+31,16,0,"xxxx , xxxx xxxxxx .",0,2.0,"XXXX, XXXX XXXXXX."
+32,1,0,date : xxxxx,0,3.0,Date:xxxxx
+33,2,0,patient info : xxxxx,0,3.0,Patient Info:xxxxx
+34,3,0,patient info : xxxxx,0,3.0,Patient Info:xxxxx
+35,4,0,clinical history,0,3.0,Clinical History
+36,5,0,clinical history,0,3.0,Clinical History
+37,6,0,"chief complaint : xxxxxx ,",0,3.0,"Chief complaint:xxxxxx,"
+38,7,0,"xxxxxxxxxxx , xxxxxxxxxxxxxxxxxxx",0,3.0,"xxxxxxxxxxx, xxxxxxxxxxxxxxxxxxx"
+39,8,0,"xxxx , xxxxxx .",0,3.0,"xxxx, xxxxxx."
+40,9,0,"xxxx , xxxxxx .",0,3.0,"xxxx, xxxxxx."
+41,10,0,section header : xxxxxxxx,0,3.0,SECTION HEADER: xxxxxxxx
+42,11,0,xxxxxxxxxxxxx,0,3.0,xxxxxxxxxxxxx
+43,12,0,xxxxxxxxxxxxx,0,3.0,xxxxxxxxxxxxx
+44,13,0,summary,0,3.0,SUMMARY
+45,14,0,summary,0,3.0,SUMMARY
+46,15,0,pat family member has Alzheimer . xxxxxxxxxxxxxxxxx,0,3.0,pat family member has Alzheimer . XXXXXXXXXXXXXXXXX

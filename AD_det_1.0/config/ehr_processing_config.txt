@@ -1,0 +1,11 @@
+key_sections: HISTORY OF PRESENT ILLNESS, HPI, PMH, H/P, FAMILY HISTORY, Family Hx, MEDICAL HISTORY, History, CHIEF COMPLAINS, CHIEF COMPLAIN, CHIEF COMPLAINT, CC, ACTIVE PROBLEM, ACTIVE PROBLEMS, Mental Status, ASSESSMENT & PLAN, PLAN, ASSESSMENT, Assess, IMPRESSION, IMPRESSION/PLAN, Elopement
+
+
+min_sec_name_length: 6
+
+family_members: mother, mom, father, dad, parent, sister, brother, grandmother, grandfather, grandma, grandpa, grandparent, aunt, uncle, sib, sibling, cousin, child, children, son, daughter, grandson, granddaughter, grandchild, niece, nephew, husband, wife, partner, fiancé, fiancée, girlfriend, boyfriend, gf, bf
+
+
+family_members_fh: mother, mom, father, dad, parent, sister, brother, grandmother, grandfather, grandma, grandpa, grandparent, aunt, uncle, sib, sibling, cousin
+
+family_members_oth: child, children, son, daughter, grandson, granddaughter, grandchild, niece, nephew, husband, wife, partner, fiancé, fiancée, girlfriend, boyfriend, gf, bf
