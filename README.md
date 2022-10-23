@@ -1,7 +1,9 @@
-# NLP_ADCohort
+# NLP_ADCohort 
+
+## AD_det_1.0
 Python NLP code to process and analyze EHR clinical notes to support the creation of patient cohorts in Alzheimer disease
 
-# preprocessing test data 
+### == Preprocessing test data ==
 
 Example use: 
 
