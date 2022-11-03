@@ -1,0 +1,5 @@
+MMSE: MMSE
+MoCA: MoCA
+window_size: 5
+
+
