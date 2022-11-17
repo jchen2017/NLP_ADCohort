@@ -1,5 +1,7 @@
 MMSE: MMSE
 MoCA: MoCA
+SLUMS: SLUMS, St. Louis University Mental Status, St Louis University Mental Status Exam
+MINICOG: mini-cog, mini cog
+BNT: BNT, Boston Naming Test
+BENTON: Benton Visual Retention Test, BVRT, Benton Test
 window_size: 5
-
-

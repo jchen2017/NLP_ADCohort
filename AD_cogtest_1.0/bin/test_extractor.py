@@ -35,58 +35,72 @@ from test_extraction_util import *
 from ehr_util import *
 import time
 
+SEGMENT_NOTE = False
 random_seed = 2138
 cpath = os.getcwd()
 ehr_config = cpath + "/config/ehr_processing_config.txt"
 test_extract_config = cpath + "/config/test_extraction_config.txt"
+  
 
-test_to_extract = ["MMSE", "MoCA"]
+test_to_extract = ["MMSE", "MoCA", "SLUMS", "MINICOG", "BNT"]
 test_extractor = testExtractor(test_extract_config)
 ehr_util = ehrUtil(ehr_config)
 
 
 def extract_test_results(inputfile, outfile, preprocessing = True):
-    test_df = pd.read_excel(inputfile, usecols = ["ReportText", "NewOverallID"])
-    test_df.rename({"ReportText":"segment", "NewOverallID": "patid"}, axis='columns', inplace = True)
+    test_df = pd.read_excel(inputfile, usecols = ["ReportText", "NoteID"])
+    test_df.drop(test_df[test_df['NoteID'] == "END"].index, inplace = True)
     test_df.fillna(method='ffill', inplace = True)
-    test_df['patid'] = test_df['patid'].astype(int)
-    test_df['id'] = test_df.groupby(['patid']).cumcount()+1
-    test_df['drop'] = 0
-    test_df['seglabel'] = ""
-    pre_seglabel = "BEGIN"
+    
+    test_df['NoteID'] = test_df['NoteID'].astype(int)
+
+    if SEGMENT_NOTE:
+        note_df_ls = []
+        for index, row in test_df.iterrows():
+            noteid =  row.NoteID
+            note = row.ReportText
+            note_df = ehr_util.segment_note(note, noteid)
+            note_df_ls.append(note_df)
+
+        test_df = pd.concat(note_df_ls)
+        test_df = test_df.reset_index(drop = True)
+
+    else:
+        test_df.rename({"ReportText":"segment"}, axis='columns', inplace = True)
+        test_df['seglabel'] = "full_note"
+        test_df['segid'] = 1
 
     for test_name in test_to_extract:
         test_df[test_name] = None
         
 
+    test_df['drop'] = 0
+
     for index, row in test_df.iterrows():
         sent = row.segment
+        seglabel = row.seglabel
+
         if sent == "" or sent == None:
             test_df.at[index,'drop'] = 1
         else:
-            seglabel1, seglabel2 = ehr_util.assign_segment_label(sent, pre_seglabel)
-            pre_seglabel = seglabel1
-
-            test_df.at[index,'seglabel'] = seglabel1
-
-            if re.search(r"(func_lines)|(attribute)|(endofnote)", seglabel1):
+            ##if re.search(r"(func_lines)|(attribute)|(endofnote)", seglabel):
+            if re.search(r"(attribute)|(endofnote)", seglabel):
                 test_df.at[index,'drop'] = 1
             else:
                 for test_name in test_to_extract:
-                    result_date = ""
+                    result_ls = []
                     for (result, date) in test_extractor.extract(test_name, test_df, index):
-                        result_date += f"({result}, {date}) "
-                    test_df.at[index, test_name] = result_date
+                        ##result_ls.append((result, date))
+                        result_ls.append(result)
 
+                    test_df.at[index, test_name] = f"{result_ls}"
+                    if len(result_ls) > 1:
+                        print(f"warning-1: multiple test results for note {row.NoteID} segment {row.segid}")
 
     test_df.drop(test_df[test_df['drop'] == 1].index, inplace = True)
-    test_df = test_df[['patid', 'id', 'segment', 'seglabel'] + test_to_extract ]
-    test_df.rename(columns={"segment": "text"}, errors="raise", inplace = True)
-    
-
+    test_df = test_df[['NoteID', 'segid', 'segment'] + test_to_extract ]
     test_df = test_df.reset_index(drop = True)
-
-    test_df.index.names = ['sid']
+    test_df.index.names = ['id']
 
     print(test_df.head(3))
 
@@ -106,7 +120,13 @@ if '__main__' == __name__:
     opt=int(sys.argv[1])
     inputfile=sys.argv[2]
     outputfile=sys.argv[3]
-    
+    if re.search(r"input\/([^_]+)_Notes", inputfile):
+        test = re.search(r"input\/([^_]+)_Notes", inputfile).group(1)
+        test_to_extract = [test]
+    elif re.search(r"input\/([^_]+)\+Sample", inputfile):
+        test = re.search(r"input\/([^_]+)\+Sample", inputfile).group(1)
+        test_to_extract = [test]
+
     if opt == 1:
         start_time = time.time()
         extract_test_results(inputfile = inputfile, outfile = outputfile)

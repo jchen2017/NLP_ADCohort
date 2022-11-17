@@ -183,3 +183,36 @@ class ehrUtil():
                 segtype = pre_seglabel
 
         return segtype, segtype2
+
+
+    def segment_note (self, note, noteid):
+        lineid = 1
+        pre_seglabel = "BEGIN"
+
+        note_dict = {}
+        note_dict["segid"] = []
+        note_dict["segment"] = []
+        note_dict["seglabel"] = []
+        ##note_dict["seglabel2"] = []
+
+        for line in note.split("\n"):
+            print(f"{lineid}: {line}")
+            seglabel, seglabel2 = self.assign_segment_label(line, pre_seglabel)
+            if seglabel != None:
+                seglabel_clean = re.sub(r":", "", seglabel)
+                print(f"seg label: {seglabel_clean}")
+            else:
+                print(f"seg label: unknown")
+
+            note_dict["segid"].append(lineid)
+            note_dict["segment"].append(line)
+            note_dict["seglabel"].append(seglabel)
+            ##note_dict["seglabel2"].append(seglabel2)
+
+            lineid += 1
+            pre_seglabel = seglabel
+
+        note_df = pd.DataFrame.from_dict(note_dict)
+        note_df.insert(0, 'NoteID', noteid)
+        
+        return note_df
