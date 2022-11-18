@@ -51,8 +51,6 @@ def extract_test_results(inputfile, outfile, preprocessing = True):
     test_df = pd.read_excel(inputfile, usecols = ["ReportText", "NoteID"])
     test_df.drop(test_df[test_df['NoteID'] == "END"].index, inplace = True)
     test_df.fillna(method='ffill', inplace = True)
-    
-    test_df['NoteID'] = test_df['NoteID'].astype(int)
 
     if SEGMENT_NOTE:
         note_df_ls = []

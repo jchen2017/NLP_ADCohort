@@ -101,7 +101,7 @@ class testExtractor():
         for tok in right_win_ls:
             if re.search(r"^\d+$", tok):
                 result = re.search("^(\d+)$", tok).group(1)
-            elif re.search(r"(^|[^\/0-9])\d+/\d{2}([^\/0-9]|$)", tok):
+            elif re.search(r"(^|[^\/0-9])\d{1,2}/\d{2}([^\/0-9]|$)", tok):
                 result = re.search(r"(\d+/\d{2})", tok).group(1)
                 
             if result != None:
@@ -221,8 +221,8 @@ class testExtractor():
             right_context = sent[m.end():]
             print("find %s in :  %s  %s  %s "%(t, left_context, t, right_context))
 
-            right_context = re.sub(r"^[^\w]+", "", right_context)
             right_context = re.sub(r"(( - )|(\. [A-Z])).*$", "", right_context)
+            right_context = re.sub(r"^[^\w]+", "", right_context)
             lef_context = re.sub(r"[ \(]+$", "", left_context)
             
             if test in ["MMSE", "MoCA", "SLUMS"]:
