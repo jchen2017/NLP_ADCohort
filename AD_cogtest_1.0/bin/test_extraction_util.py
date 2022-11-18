@@ -221,9 +221,12 @@ class testExtractor():
             right_context = sent[m.end():]
             print("find %s in :  %s  %s  %s "%(t, left_context, t, right_context))
 
-            right_context = re.sub(r"(( - )|(\. [A-Z])).*$", "", right_context)
+            right_context = re.sub(r"(( - )|(\. +[A-Z])).*$", "", right_context)
             right_context = re.sub(r"^[^\w]+", "", right_context)
-            lef_context = re.sub(r"[ \(]+$", "", left_context)
+            
+            left_context = re.sub(r"^.* - ", "", left_context)
+            left_context = re.sub(r"^.*\. +([A-Z])", r'\1', left_context)
+            left_context = re.sub(r"[ \(]+$", "", left_context)
             
             if test in ["MMSE", "MoCA", "SLUMS"]:
                 result = self._extract_results_generic(right_context, left_context)
