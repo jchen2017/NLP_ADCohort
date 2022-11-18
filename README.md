@@ -18,7 +18,9 @@ python bin/test_extractor.py 1  sample_for_cogtests.xlsx cognitive_test_results.
 
 ## Contributors for AD_cogtest_1.0
 Jinying Chen: method design, code development, code testing
+
 Xuyang Li: data collection, method design, code testing
+
 Andrew H. Nguyen: data collection, result validation
 
 
